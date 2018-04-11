@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'skill.index.title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+	<h2>{{ 'skill.index.heading'|trans }}</h2>
+
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th>{{ 'skill.fields.name'|trans }}</th>
+				<th>{{ 'skill.fields.blades'|trans }}</th>{#
+				<th>{{ 'skill.fields.level'|trans }}</th>#}
+				<th><a href="{{ path('skill_new') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for skill in skills %}
+			<tr>
+				<td>{{ skill.name }}</td>
+				<td>{{ skill.blades|length }}</td>{#
+				<td>{{ skill.level }}</td>#}
+				<td><a href="{{ path('skill_edit', { 'id': skill.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

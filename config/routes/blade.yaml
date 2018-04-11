@@ -1,0 +1,23 @@
+blade_index:
+  path:     /
+  controller: App\Controller\BladeController::index
+
+blade_new:
+  path:     /blade/new
+  controller: App\Controller\BladeController::new
+
+blade_show:
+  path:     /blade/{id}
+  controller: App\Controller\BladeController::show
+
+blade_edit:
+  path:     /blade/{id}/edit
+  controller: App\Controller\BladeController::edit
+
+blade_delete:
+  path:     /blade/{id}/delete
+  controller: App\Controller\BladeController::delete
+
+blade_search:
+  path:     /search
+  controller: App\Controller\BladeController::search

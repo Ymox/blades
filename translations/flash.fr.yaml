@@ -1,0 +1,15 @@
+blade:
+  success:
+    created: Nouvelle lame %name% enregistrée
+    edited: Lame %name% éditée
+    deleted: Lame supprimée
+  error:
+    deleted: Impossible de supprimer la lame
+      
+driver:
+  success:
+    created: Nouveau pilote %name% enregistré
+    edited: Pilote %name% édité
+    deleted: Pilote supprimé
+  error:
+    deleted: Impossible de supprimer le pilote

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ blade.name }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+	<h2>{{ blade.element.name }} {{ blade.name }} <small>{{ blade.gender }}</small></h2>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>{{ 'blade.fields.weapon'|trans }}</th>
+				<td>{{ blade.weapon.name }}</td>
+				<th>{{ 'blade.fields.rareness'|trans }}</th>
+				<td>{% for i in 1..(blade.rareness) %}👑{% endfor %}</td>
+			</tr>
+			<tr>
+				<th>{{ 'blade.fields.class'|trans }}</th>
+				<td>{{ ('blade.class.' ~ blade.class ~ '.long')|trans }}</td>
+				<th>{{ 'blade.fields.driver'|trans }}</th>
+				<td>{{ blade.driver.name }}</td>
+			</tr>
+			<tr>
+				<th>{{ 'blade.fields.trustLevel'|trans }}</th>
+				<td>{{ blade.trustLevel }}</td>
+				<th>{{ 'blade.fields.strength'|trans }}</th>
+				<td>{{ blade.strength }}</td>
+			</tr>
+			<tr>
+				<th colspan="4">{{ 'blade.fields.skills'|trans }}</th>
+			</tr>
+			{% for skill in blade.skills %}
+			<tr>
+    			<td colspan="2">{{ skill.name|default('Non chargé') }}</td>
+			    <td id="S{{ skill.id }}">{{ skill.level }}</td>
+    			<td>
+    				<a href="{{ path('skill_change', { 'id': skill.id, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-up"></i></a>
+    				{% if skill.level > 1 -%}
+    				<a href="{{ path('skill_change', { 'id': skill.id, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-down"></i></a>
+    				{% endif -%}
+				</td>
+			</tr>
+		    {% endfor %}
+		</tbody>
+	</table>
+
+	<ul class="list-inline float-right">
+		<li class="list-inline-item">
+			<a href="{{ path('blade_index') }}" class="btn btn-light"><i class="fa fa-list"></i></a>
+		</li>
+		<li class="list-inline-item">
+			<a href="{{ path('blade_edit', { 'id': blade.id }) }}" class="btn btn-warning" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+		</li>
+		<li class="list-inline-item">
+			{{ form_start(delete_form) }}
+				<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+			{{ form_end(delete_form) }}
+		</li>
+	</ul>
+{% endblock %}
+
+{% block javascripts %}
+		<script src="{{ asset('js/ajaxify.js') }}"></script>
+{% endblock %}

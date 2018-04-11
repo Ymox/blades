@@ -1,0 +1,28 @@
+App\Entity\WeaponLevel:
+  type: entity
+  repositoryClass: App\Repository\WeaponLevelRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  fields:
+    y:
+      type: smallint
+    x:
+      type: smallint
+    b:
+      type: smallint
+    chain:
+      type: smallint
+
+  manyToOne:
+    driver:
+      targetEntity: App\Entity\Driver
+      inversedBy:  weaponLevels
+      fetch: EAGER
+    weapon:
+      targetEntity: App\Entity\Weapon
+      inversedBy: levels 
+      fetch: EAGER

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'blade.index.title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+	<h2>{{ 'blade.index.heading'|trans }}</h2>
+
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th>{{ 'blade.fields.gender'|trans }}</th>
+				<th>{{ 'blade.fields.name'|trans }}</th>
+				<th>{{ 'blade.fields.weapon'|trans }}</th>
+				<th>{{ 'blade.fields.rareness'|trans }}</th>
+				<th>{{ 'blade.fields.driver'|trans }}</th>
+				<th><a href="{{ path('blade_new') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for blade in blades %}
+			<tr style="background-color: {{ blade.element.color }}">
+				<td>{{ blade.gender }}</td>
+				<td>{{ blade.name }}</td>
+				<td>{{ blade.weapon.name }}</td>
+				<td>{% for i in 1..(blade.rareness) %}{% if i is odd %}<sup>{% else %}<sub>{% endif %}👑{% if i is odd %}</sup>{% else %}</sub>{% endif %}{% endfor %}</td>
+				<td>{{ blade.driver.name }}</td>
+				<td><a href="{{ path('blade_show', { 'id': blade.id }) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
+					<a href="{{ path('blade_edit', { 'id': blade.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

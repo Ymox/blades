@@ -1,0 +1,25 @@
+weapon_index:
+  path:     /weapon/
+  controller: App\Controller\WeaponController::index
+
+weapon_new:
+  path:     /weapon/new
+  controller: App\Controller\WeaponController::new
+
+weapon_show:
+  path:     /weapon/{id}
+  controller: App\Controller\WeaponController::show
+
+weapon_edit:
+  path:     /weapon/{id}/edit
+  controller: App\Controller\WeaponController::edit
+
+weapon_change:
+  path:     /weapon/{id}/change/{item}/{change}
+  controller: App\Controller\WeaponController::change
+  requirements:
+    change: "-?1"
+
+weapon_delete:
+  path:     /weapon/{id}/delete
+  controller: App\Controller\WeaponController::delete

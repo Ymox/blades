@@ -1,0 +1,13 @@
+App\Entity\SkillLevel:
+  properties:
+    skill:
+      - NotNull: ~
+    blade:
+      - NotNull: ~
+    level:
+      - NotBlank: ~
+      - Type:
+          type: integer
+      - Range:
+          min: 0
+          max: 5

@@ -1,0 +1,25 @@
+skill_index:
+  path:     /skill/
+  controller: App\Controller\SkillController::index
+
+skill_new:
+  path:     /skill/new
+  controller: App\Controller\SkillController::new
+
+skill_show:
+  path:     /skill/{id}
+  controller: App\Controller\SkillController::show
+
+skill_edit:
+  path:     /skill/{id}/edit
+  controller: App\Controller\SkillController::edit
+
+skill_change:
+  path:     /skill/{id}/change/{change}
+  controller: App\Controller\SkillController::change
+  requirements:
+    change: "-?1"
+
+skill_delete:
+  path:     /skill/{id}/delete
+  controller: App\Controller\SkillController::delete

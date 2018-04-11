@@ -1,0 +1,19 @@
+element_index:
+  path:     /element/
+  controller: App\Controller\ElementController::index
+
+element_new:
+  path:     /element/new
+  controller: App\Controller\ElementController::new
+
+element_show:
+  path:     /element/{id}
+  controller: App\Controller\ElementController::show
+
+element_edit:
+  path:     /element/{id}/edit
+  controller: App\Controller\ElementController::edit
+
+element_delete:
+  path:     /element/{id}/delete
+  controller: App\Controller\ElementController::delete

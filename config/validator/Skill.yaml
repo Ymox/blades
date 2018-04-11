@@ -1,0 +1,10 @@
+App\Entity\Skill:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+  properties:
+    name:
+      - NotBlank: ~
+      - Type:
+          type: string
+      - Length:
+          min: 5

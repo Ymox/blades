@@ -1,0 +1,106 @@
+site:
+  name: Xenoblade Chronicles 2 blade list
+
+menu:
+  blades:
+    heading: Lames
+    search: Recherche
+    index: Liste
+    new: Nouvelle
+  drivers:
+    heading: Pilotes
+    index: Liste
+    new: Nouveau
+  skills:
+    heading: Compétences
+    index: Liste
+    new: Nouvelle
+  elements:
+    heading: Eléments
+    index: Liste
+    new: Nouveau
+
+blade:
+  fields:
+    class: Classe
+    driver: Pilote
+    name: Nom
+    element: Elément
+    gender: Genre
+    rareness: Rareté
+    relevance: Pertinence
+    strength: Force
+    skills: Compétences
+    trustLevel: Confiance
+    weapon: Arme
+
+  class:
+    ATK:
+      short: 🗡️
+      long: Attaquant
+    HLR:
+      short: ⚕️
+      long: Soigneur
+    TNK:
+      short: 🛡️
+      long: Sentinelle
+
+  index:
+    title: &blade_index Lames
+    heading: *blade_index
+
+  new:
+    title: &blade_new Nouvelle Lame
+    heading: *blade_new
+    
+skill_level:
+  fields:
+    skill: Compétence
+    level: Niveau
+
+driver:
+  fields:
+    name: Nom
+    blades: Lames
+    weaponLevels: Armes
+
+  index:
+    title: &driver_index Pilotes
+    heading: *driver_index
+
+  new:
+    title: &driver_new Nouveau pilote
+    heading: *driver_new
+
+skill:
+  fields:
+    name: Nom
+    blades: Lames
+
+  new:
+    title: &skill_new Nouvelle compétence
+    heading: *skill_new
+
+  index:
+    title: &skill_index Liste des compétences
+    heading: *skill_index
+
+weapon_level:
+  fields:
+    x: X
+    y: Y
+    b: B
+    chain: Spécial
+
+element:
+  fields:
+    name: Nom
+    blades: Lames
+
+  index:
+    title: &element_index Eléments
+    heading: *element_index
+
+  new:
+    title: &element_new Nouvel élément
+    heading: *element_new

@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="#">{{ 'site.name'|trans }}</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Menu" aria-controls="Menu" aria-expanded="false">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="Menu">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a href="#" id="Blades" class="nav-link dropdown-toggle{% if 'blade' in app.request.get('_route') %} active{% endif %}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'menu.blades.heading'|trans }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="Blades">
+					<a href="{{ path('blade_search') }}" class="dropdown-item{% if app.request.get('_route') == 'blade_search' %} active{% endif %}">{{ 'menu.blades.search'|trans }}</a>
+					<a href="{{ path('blade_index') }}" class="dropdown-item{% if app.request.get('_route') == 'blade_index' %} active{% endif %}">{{ 'menu.blades.index'|trans }}</a>
+					<a href="{{ path('blade_new') }}" class="dropdown-item{% if app.request.get('_route') == 'blade_new' %} active{% endif %}">{{ 'menu.blades.new'|trans }}</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" id="Drivers" class="nav-link dropdown-toggle{% if 'driver' in app.request.get('_route') %} active{% endif %}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'menu.drivers.heading'|trans }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="Drivers">
+					<a href="{{ path('driver_index') }}" class="dropdown-item{% if app.request.get('_route') == 'driver_index' %} active{% endif %}">{{ 'menu.drivers.index'|trans }}</a>
+					<a href="{{ path('driver_new') }}" class="dropdown-item{% if app.request.get('_route') == 'driver_new' %} active{% endif %}">{{ 'menu.drivers.new'|trans }}</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" id="Skills" class="nav-link dropdown-toggle{% if 'skill' in app.request.get('_route') %} active{% endif %}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'menu.skills.heading'|trans }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="Skills">
+					<a href="{{ path('skill_index') }}" class="dropdown-item{% if app.request.get('_route') == 'skill_index' %} active{% endif %}">{{ 'menu.skills.index'|trans }}</a>
+					<a href="{{ path('skill_new') }}" class="dropdown-item{% if app.request.get('_route') == 'skill_new' %} active{% endif %}">{{ 'menu.skills.new'|trans }}</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" id="Elements" class="nav-link dropdown-toggle{% if 'element' in app.request.get('_route') %} active{% endif %}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'menu.elements.heading'|trans }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="Elements">
+					<a href="{{ path('element_index') }}" class="dropdown-item{% if app.request.get('_route') == 'element_index' %} active{% endif %}">{{ 'menu.elements.index'|trans }}</a>
+					<a href="{{ path('element_new') }}" class="dropdown-item{% if app.request.get('_route') == 'element_new' %} active{% endif %}">{{ 'menu.elements.new'|trans }}</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</nav>

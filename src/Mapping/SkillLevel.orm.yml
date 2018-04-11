@@ -1,0 +1,22 @@
+App\Entity\SkillLevel:
+  type: entity
+  repositoryClass: App\Repository\SkillLevelRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    level:
+      type: smallint
+
+  manyToOne:
+    blade:
+      targetEntity: App\Entity\Blade
+      inversedBy: skills
+      fetch: EAGER
+    skill:
+      targetEntity: App\Entity\Skill
+      inversedBy: blades  
+      fetch: EAGER

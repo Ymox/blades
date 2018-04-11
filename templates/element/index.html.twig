@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'element.index.title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+	<h2>{{ 'element.index.heading'|trans }}</h2>
+
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th>{{ 'element.fields.name'|trans }}</th>
+				<th>{{ 'element.fields.blades'|trans }}</th>
+				<th><a href="{{ path('element_new') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for element in elements %}
+			<tr>
+				<td>{{ element.name }}</td>
+				<td>{{ element.blades|length }}</td>
+				<td><a href="{{ path('element_edit', { 'id': element.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+App\Entity\Blade:
+  type: entity
+  repositoryClass: App\Repository\BladeRepository
+  entityListeners:
+    App\Listener\BladeListener:
+      prePersist: [ createWeaponLevel ]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    name:
+      type: string
+    rareness:
+      type: smallint
+    class:
+      type: string
+      length: 3
+    gender:
+      type: string
+      length: 1
+    strength:
+      type: smallint
+    trustLevel:
+      type: smallint
+
+  oneToMany:
+    skills:
+      targetEntity: App\Entity\SkillLevel
+      mappedBy: blade
+      cascade:
+        - persist
+        - remove
+
+  manyToOne:
+    element:
+      targetEntity: App\Entity\Element
+      inversedBy: blades
+
+    weapon:
+      targetEntity: App\Entity\Weapon
+      inversedBy: blades
+
+    driver:
+      targetEntity: App\Entity\Driver
+      inversedBy: blades

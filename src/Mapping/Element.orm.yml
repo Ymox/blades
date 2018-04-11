@@ -1,0 +1,20 @@
+App\Entity\Element:
+  type: entity
+  repositoryClass: App\Repository\ElementRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    name:
+      type: string
+    color:
+      type: string
+      length: 7
+
+  oneToMany:
+    blades:
+      targetEntity: App\Entity\Blade
+      mappedBy: element

@@ -1,0 +1,20 @@
+App\Entity\Weapon:
+  type: entity
+  repositoryClass: App\Repository\WeaponRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    name:
+      type: string
+
+  oneToMany:
+    blades:
+      targetEntity: App\Entity\Blade
+      mappedBy: weapon
+    levels:
+      targetEntity: App\Entity\WeaponLevel
+      mappedBy: weapon

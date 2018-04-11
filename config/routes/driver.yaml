@@ -1,0 +1,19 @@
+driver_index:
+  path:     /driver/
+  controller: App\Controller\DriverController::index
+
+driver_new:
+  path:     /driver/new
+  controller: App\Controller\DriverController::new
+
+driver_show:
+  path:     /driver/{id}
+  controller: App\Controller\DriverController::show
+
+driver_edit:
+  path:     /driver/{id}/edit
+  controller: App\Controller\DriverController::edit
+
+driver_delete:
+  path:     /driver/{id}/delete
+  controller: App\Controller\DriverController::delete

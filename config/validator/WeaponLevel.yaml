@@ -1,0 +1,39 @@
+App\Entity\WeaponLevel:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+        fields:
+          - driver
+          - weapon
+  properties:
+    weapon:
+      - NotNull: ~
+    driver:
+      - NotNull: ~
+    y:
+      - NotBlank: ~
+      - Type:
+          type: integer
+      - Range:
+          min: 1
+          max: 5
+    x:
+      - NotBlank: ~
+      - Type:
+          type: integer
+      - Range:
+          min: 1
+          max: 5
+    b:
+      - NotBlank: ~
+      - Type:
+          type: integer
+      - Range:
+          min: 1
+          max: 5
+    chain:
+      - NotBlank: ~
+      - Type:
+          type: integer
+      - Range:
+          min: 1
+          max: 5

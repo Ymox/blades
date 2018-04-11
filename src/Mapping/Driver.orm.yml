@@ -1,0 +1,27 @@
+App\Entity\Driver:
+  type: entity
+  repositoryClass: App\Repository\DriverRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    name:
+      type: string
+
+  oneToMany:
+    blades:
+      targetEntity: App\Entity\Blade
+      mappedBy: driver
+      fetch: EXTRA_LAZY
+      cascade:
+        - persist
+        - remove
+    weaponLevels:
+      targetEntity: App\Entity\WeaponLevel
+      mappedBy: driver
+      cascade:
+        - persist
+        - remove
