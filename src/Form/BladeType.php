@@ -45,7 +45,7 @@ class BladeType extends AbstractType
                 'label_format' => 'blade.fields.%name%',
             ))
             ->add('trustLevel', ChoiceType::class, array(
-                'choices' => array_combine(range('E', 'A', -1), range(1, 5)),
+                'choices' => array_combine(range('E', 'A', -1), range(1, 5)) + ['S' => 6],
                 'label_format' => 'blade.fields.%name%',
                 'choice_translation_domain' => false,
             ))

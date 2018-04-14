@@ -18,6 +18,7 @@ class BladeSearchType extends AbstractType
             ->add('gender', ChoiceType::class, array(
                 'required'     => false,
                 'multiple'     => true,
+                'expanded'     => true,
                 'choices' => array(
                     'Masculin' => 'M',
                     'Féminin'  => 'F',
@@ -25,6 +26,7 @@ class BladeSearchType extends AbstractType
                 ),
                 'label_format' => 'blade.fields.%name%',
                 'choice_translation_domain' => false,
+                'attr' => array('class' => 'form-check-inline'),
             ))
             ->add('element', \Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
                 'required'     => false,
@@ -43,7 +45,7 @@ class BladeSearchType extends AbstractType
                 'label_format' => 'blade.fields.%name%',
             ))
 //             ->add('trustLevel', ChoiceType::class, array(
-//                 'choices' => array_combine(range('E', 'A', -1), range(1, 5)),
+//                 'choices' => array_combine(range('E', 'A', -1), range(1, 5)) + ['S' => 6],
 //                 'label_format' => 'blade.fields.%name%',
 //                 'choice_translation_domain' => false,
 //             ))

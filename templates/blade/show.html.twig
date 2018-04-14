@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<th>{{ 'blade.fields.trustLevel'|trans }}</th>
-				<td>{{ blade.trustLevel }}</td>
+				<td>{{ ('blade.trustLevels.' ~ blade.trustLevel)|trans }}</td>
 				<th>{{ 'blade.fields.strength'|trans }}</th>
 				<td>{{ blade.strength }}</td>
 			</tr>
@@ -30,16 +30,16 @@
 			</tr>
 			{% for skill in blade.skills %}
 			<tr>
-    			<td colspan="2">{{ skill.name|default('Non chargé') }}</td>
-			    <td id="S{{ skill.id }}">{{ skill.level }}</td>
-    			<td>
-    				<a href="{{ path('skill_change', { 'id': skill.id, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-up"></i></a>
-    				{% if skill.level > 1 -%}
-    				<a href="{{ path('skill_change', { 'id': skill.id, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-down"></i></a>
-    				{% endif -%}
+				<td colspan="2">{{ skill.name|default('Non chargé') }}</td>
+				<td id="S{{ skill.id }}">{{ skill.level }}</td>
+				<td>
+					<a href="{{ path('skill_change', { 'id': skill.id, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-up"></i></a>
+					{% if skill.level > 1 -%}
+					<a href="{{ path('skill_change', { 'id': skill.id, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-down"></i></a>
+					{% endif -%}
 				</td>
 			</tr>
-		    {% endfor %}
+			{% endfor %}
 		</tbody>
 	</table>
 
