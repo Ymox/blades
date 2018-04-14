@@ -19,18 +19,18 @@
 				<td><a href="{{ path('blade_show', { 'id': blade.id }) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
 					<a href="{{ path('blade_edit', { 'id': blade.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
 			</tr>
-		    {% endfor %}
+			{% endfor %}
 			<tr>
 				<th colspan="5"><h3>{{ 'driver.fields.weaponLevels'|trans }} <small>({{ driver.weaponLevels.count }})</h3></th>
 			</tr>
 			{% for weapon in driver.weaponLevels %}
 			<tr>
 				<th colspan="2">{{ weapon.name }}</th>
-    			{% for item,art in weapon.arts %}
-    			<td>{{ ('weapon_level.fields.' ~ item)|trans }}</td>
-    			<td id="L{{ item ~ weapon.id }}">{{ art }}</td>
-    			<td><a href="{{ path('weapon_change', { 'id': weapon.id, 'item': item, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#L{{ item ~ weapon.id }}"><i class="fa fa-chevron-circle-up"></i></a>
-    				<a href="{{ path('weapon_change', { 'id': weapon.id, 'item': item, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#L{{ item ~ weapon.id }}"><i class="fa fa-chevron-circle-down"></i></a></td>
+				{% for item,art in weapon.arts %}
+				<td>{{ ('weapon_level.fields.' ~ item)|trans }}</td>
+				<td id="L{{ item ~ weapon.id }}">{{ art }}</td>
+				<td><a href="{{ path('weapon_change', { 'id': weapon.id, 'item': item, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#L{{ item ~ weapon.id }}"><i class="fa fa-chevron-circle-up"></i></a>
+					<a href="{{ path('weapon_change', { 'id': weapon.id, 'item': item, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#L{{ item ~ weapon.id }}"><i class="fa fa-chevron-circle-down"></i></a></td>
 				{%- if not loop.last %}
 			</tr>
 			<tr>
@@ -38,7 +38,7 @@
 				{%- endif -%}
 				{% endfor %}
 			</tr>
-		    {% endfor %}
+			{% endfor %}
 		</tbody>
 	</table>
 
