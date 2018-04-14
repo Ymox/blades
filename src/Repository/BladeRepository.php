@@ -25,8 +25,8 @@ class BladeRepository extends EntityRepository
                 $counts[] = new Func('IF', array($dqlCriterion, 1, 0));
             } else if ($criterion == 'strength') {
                 $alias = 'b';
-                $counts[] = new Func('IF', array($dqlCriterion, 1, 0));
                 $dqlCriterion = $qb->expr()->gte($alias . '.' . $criterion, ':' . $criterion);
+                $counts[] = new Func('IF', array($dqlCriterion, 1, 0));
             } else if ($criterion == 'skills') {
                 $dqlCriterion = $qb->expr()->in($alias . '.id', ':' . $criterion);
                 $qb ->leftJoin('b.' . $criterion, 'b' . $alias)
