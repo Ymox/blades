@@ -7,38 +7,40 @@
 
 	{% include 'blade/form.html.twig' with {'form': form} %}
 
-	<table class="table table-sm">
-		<thead>
-			<tr>
-				<th>{{ 'blade.fields.name'|trans }}</th>
-				<th>{{ 'blade.fields.gender'|trans }}</th>
-				<th>{{ 'blade.fields.weapon'|trans }}</th>
-				<th>{{ 'blade.fields.rareness'|trans }}</th>
-				<th>{{ 'blade.fields.skills'|trans }}</th>
-				<th>{{ 'blade.fields.driver'|trans }}</th>
-				<th>{{ 'blade.fields.relevance'|trans }}</th>
-				<th><a href="{{ path('blade_new') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a></th>
-			</tr>
-		</thead>
-		<tbody>
-		{% for blade in blades %}
-			<tr style="background-color: {{ blade[0].element.color }}">
-				<td>{{ blade[0].name }}</td>
-				<td>{{ blade[0].gender }}</td>
-				<td>{{ blade[0].weapon.name }}</td>
-				<td>{% for i in 1..(blade[0].rareness) %}{% if i is odd %}<sup>{% else %}<sub>{% endif %}👑{% if i is odd %}</sup>{% else %}</sub>{% endif %}{% endfor %}</td>
-				<td>{% for skill in blade[0].skills %}
-						{{- skill.name }}{% if not loop.last %}, {% endif -%}
-					{% endfor %}</td>
-				<td>{{ blade[0].driver.name }}</td>
-				<td><meter low="{{ 3 / (2 * nb_criteria) }}" high="{{ 3 / nb_criteria }}" optimum="1" value="{{ blade.relevance / nb_criteria }}">
-						{{ blade.relevance }} / {{ nb_criteria }}
-					</meter> {{ blade.relevance }} / {{ nb_criteria }}</td>
-				<td><a href="{{ path('blade_show', { 'id': blade[0].id }) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-					<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
-					<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
-			</tr>
-		{% endfor %}
-		</tbody>
-	</table>
+	<div class="table-responsive-sm">
+		<table class="table table-sm">
+			<thead>
+				<tr>
+					<th>{{ 'blade.fields.name'|trans }}</th>
+					<th>{{ 'blade.fields.gender'|trans }}</th>
+					<th>{{ 'blade.fields.weapon'|trans }}</th>
+					<th>{{ 'blade.fields.rareness'|trans }}</th>
+					<th>{{ 'blade.fields.skills'|trans }}</th>
+					<th>{{ 'blade.fields.driver'|trans }}</th>
+					<th>{{ 'blade.fields.relevance'|trans }}</th>
+					<th><a href="{{ path('blade_new') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a></th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for blade in blades %}
+				<tr style="background-color: {{ blade[0].element.color }}">
+					<td>{{ blade[0].name }}</td>
+					<td>{{ blade[0].gender }}</td>
+					<td>{{ blade[0].weapon.name }}</td>
+					<td>{% for i in 1..(blade[0].rareness) %}{% if i is odd %}<sup>{% else %}<sub>{% endif %}👑{% if i is odd %}</sup>{% else %}</sub>{% endif %}{% endfor %}</td>
+					<td>{% for skill in blade[0].skills %}
+							{{- skill.name }}{% if not loop.last %}, {% endif -%}
+						{% endfor %}</td>
+					<td>{{ blade[0].driver.name }}</td>
+					<td><meter low="{{ 3 / (2 * nb_criteria) }}" high="{{ 3 / nb_criteria }}" optimum="1" value="{{ blade.relevance / nb_criteria }}">
+							{{ blade.relevance }} / {{ nb_criteria }}
+						</meter> {{ blade.relevance }} / {{ nb_criteria }}</td>
+					<td><a href="{{ path('blade_show', { 'id': blade[0].id }) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
+						<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+						<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}
