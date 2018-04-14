@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ ('error.' ~ status_code ~ '.title')|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+<h2>{{ ('error.' ~ status_code ~ '.heading')|trans }}</h2>
+<p>{{ ('error.' ~ status_code ~ '.text')|trans }}</p>
+{% endblock %}

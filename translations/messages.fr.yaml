@@ -1,6 +1,16 @@
 site:
   name: Xenoblade Chronicles 2 blade list
 
+error:
+  404:
+    title: &error_404 Non trouvé
+    heading: *error_404
+    text: Quand on ne sait pas ce qu'on cherche, on ne le trouve pas…
+  500:
+    title: &error_500 Erreur serveur
+    heading: *error_500
+    text: Ah ben bravo, c'est du propre !
+
 menu:
   blades:
     heading: Lames
