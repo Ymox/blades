@@ -36,11 +36,45 @@
 							{{ blade.relevance }} / {{ nb_criteria }}
 						</meter> {{ blade.relevance }} / {{ nb_criteria }}</td>
 					<td><a href="{{ path('blade_show', { 'id': blade[0].id }) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-						<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
-						<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+						<div class="btn-group">
+							<div class="btn-group dropleft">
+								<button type="button" class="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+								<table class="dropdown-menu">
+									<thead>
+										<tr>
+											<th></th>
+											<th>{{ 'blade.fields.trustLevel'|trans }}</th>
+											<th id="TL{{ blade[0].id }}">{{ ('blade.trustLevels.' ~ blade[0].trustLevel)|trans }}</th>
+											<th>{% if blade[0].trustLevel < 6 -%}
+												<a href="{{ path('blade_trust', { 'id': blade[0].id }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#TL{{ blade[0].id }}"><i class="fa fa-chevron-circle-up"></i></a></td>
+												{%- endif %}</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% for skill in blade[0].skills %}
+										<tr>
+											<td>
+												{% if skill.level > 1 -%}
+												<a href="{{ path('skill_change', { 'id': skill.id, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-down"></i></a>
+												{% endif -%}
+											</td>
+											<td>{{ skill.name|default('Non chargé') }}</td>
+											<td id="S{{ skill.id }}">{{ skill.level }}</td>
+											<td><a href="{{ path('skill_change', { 'id': skill.id, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-up"></i></a></td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+							<a href="{{ path('blade_edit', { 'id': blade[0].id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+						</div></td>
 				</tr>
 			{% endfor %}
 			</tbody>
 		</table>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+		<script src="{{ asset('js/ajaxify.js') }}"></script>
 {% endblock %}

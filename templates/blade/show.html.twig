@@ -21,7 +21,11 @@
 			</tr>
 			<tr>
 				<th>{{ 'blade.fields.trustLevel'|trans }}</th>
-				<td>{{ ('blade.trustLevels.' ~ blade.trustLevel)|trans }}</td>
+				<td>
+					<span id="TL{{ blade.id }}">{{ ('blade.trustLevels.' ~ blade.trustLevel)|trans }}</span>
+					{% if blade.trustLevel < 6 -%}
+					<a href="{{ path('blade_trust', { 'id': blade.id }) }}" class="btn pull-right btn-sm btn-outline-success ajaxify" data-load-target="#TL{{ blade.id }}"><i class="fa fa-chevron-circle-up"></i></a></td>
+					{% endif %}
 				<th>{{ 'blade.fields.strength'|trans }}</th>
 				<td>{{ blade.strength }}</td>
 			</tr>

@@ -7,6 +7,7 @@ use App\Entity\Blade;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\BladeType;
 use App\Form\BladeSearchType;
+use Symfony\Component\HttpFoundation\Response;
 
 class BladeController extends Controller
 {
@@ -68,6 +69,18 @@ class BladeController extends Controller
             'form' => $form->createView(),
             'delete_form' => $this->createDeleteForm($blade)->createView(),
         ));
+    }
+
+    public function trust(Blade $blade)
+    {
+        if ($blade->getTrustLevel() < 6) {
+            $blade->setTrustLevel($blade->getTrustLevel() + 1);
+            $this->getDoctrine()->getManager()->flush();
+            $response = new Response($this->get('translator')->trans('blade.trustLevels.' . $blade->getTrustLevel()));
+        } else {
+            $response = new Response(null, Response::HTTP_NO_CONTENT);
+        }
+        return $response;
     }
 
     private function createDeleteForm(Blade $blade)

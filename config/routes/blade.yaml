@@ -18,6 +18,10 @@ blade_delete:
   path:     /blade/{id}/delete
   controller: App\Controller\BladeController::delete
 
+blade_trust:
+  path:     /blade/{id}/trust
+  controller: App\Controller\BladeController::trust
+
 blade_search:
   path:     /search
   controller: App\Controller\BladeController::search

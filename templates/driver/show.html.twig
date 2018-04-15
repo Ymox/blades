@@ -8,24 +8,54 @@
 	<table class="table table-sm">
 		<tbody>
 			<tr>
-				<th colspan="5"><h3>{{ 'driver.fields.blades'|trans }} <small>({{ driver.blades.count }})</h3></th>
+				<th colspan="4"><h3>{{ 'driver.fields.blades'|trans }} <small>({{ driver.blades.count }})</h3></th>
 			</tr>
 			{% for blade in driver.blades %}
 			<tr style="background-color: {{ blade.element.color }}">
-				<td>{{ blade.gender }}</td>
 				<td>{{ blade.name }}</td>
 				<td>{{ blade.weapon.name }}</td>
 				<td>{% for i in 1..(blade.rareness) %}{% if i is odd %}<sup>{% else %}<sub>{% endif %}👑{% if i is odd %}</sup>{% else %}</sub>{% endif %}{% endfor %}</td>
 				<td><a href="{{ path('blade_show', { 'id': blade.id }) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-					<a href="{{ path('blade_edit', { 'id': blade.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+					<div class="btn-group">
+						<div class="btn-group dropleft">
+							<button type="button" class="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+							<table class="dropdown-menu">
+								<thead>
+									<tr>
+										<th></th>
+										<th>{{ 'blade.fields.trustLevel'|trans }}</th>
+										<th id="TL{{ blade.id }}">{{ ('blade.trustLevels.' ~ blade.trustLevel)|trans }}</th>
+										<th>{% if blade.trustLevel < 6 -%}
+											<a href="{{ path('blade_trust', { 'id': blade.id }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#TL{{ blade.id }}"><i class="fa fa-chevron-circle-up"></i></a></td>
+											{%- endif %}</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for skill in blade.skills %}
+									<tr>
+										<td>
+											{% if skill.level > 1 -%}
+											<a href="{{ path('skill_change', { 'id': skill.id, 'change': -1 }) }}" class="btn btn-sm btn-outline-warning ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-down"></i></a>
+											{% endif -%}
+										</td>
+										<td>{{ skill.name|default('Non chargé') }}</td>
+										<td id="S{{ skill.id }}">{{ skill.level }}</td>
+										<td><a href="{{ path('skill_change', { 'id': skill.id, 'change': 1 }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#S{{ skill.id }}"><i class="fa fa-chevron-circle-up"></i></a></td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<a href="{{ path('blade_edit', { 'id': blade.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+					</div></td>
 			</tr>
 			{% endfor %}
 			<tr>
-				<th colspan="5"><h3>{{ 'driver.fields.weaponLevels'|trans }} <small>({{ driver.weaponLevels.count }})</h3></th>
+				<th colspan="4"><h3>{{ 'driver.fields.weaponLevels'|trans }} <small>({{ driver.weaponLevels.count }})</h3></th>
 			</tr>
 			{% for weapon in driver.weaponLevels %}
 			<tr>
-				<th colspan="2">{{ weapon.name }}</th>
+				<th>{{ weapon.name }}</th>
 				{% for item,art in weapon.arts %}
 				<td>{{ ('weapon_level.fields.' ~ item)|trans }}</td>
 				<td id="L{{ item ~ weapon.id }}">{{ art }}</td>
@@ -34,7 +64,7 @@
 				{%- if not loop.last %}
 			</tr>
 			<tr>
-				<td colspan="2"></td>
+				<td></td>
 				{%- endif -%}
 				{% endfor %}
 			</tr>
