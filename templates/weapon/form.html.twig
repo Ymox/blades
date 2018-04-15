@@ -1,0 +1,5 @@
+{% set attr = app.request.xmlHttpRequest ? {'attr': {'class': 'ajaxify'}} : {} %}
+{{ form_start(form, attr) }}
+	{{ form_widget(form) }}
+	<button type="submit" class="btn btn-primary float-left"><i class="fa fa-check"></i></button>
+{{ form_end(form) }}

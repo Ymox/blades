@@ -1,5 +1,5 @@
 site:
-  name: Xenoblade Chronicles 2 blade list
+  name: Gestion de collection de lames
 
 error:
   404:
@@ -29,6 +29,10 @@ menu:
     heading: Eléments
     index: Liste
     new: Nouveau
+  weapons:
+    heading: Armes
+    index: Liste
+    new: Nouvelle
 
 blade:
   fields:
@@ -101,6 +105,19 @@ skill:
   index:
     title: &skill_index Liste des compétences
     heading: *skill_index
+
+weapon:
+  fields:
+    name: Nom
+    blades: Lames
+
+  index:
+    title: &weapon_index Armes
+    heading: *weapon_index
+
+  new:
+    title: &weapon_new Nouvelle arme
+    heading: *weapon_new
 
 weapon_level:
   fields:

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'weapon.index.title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+	<h2>{{ 'weapon.index.heading'|trans }}</h2>
+
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th>{{ 'weapon.fields.name'|trans }}</th>
+				<th>{{ 'weapon.fields.blades'|trans }}</th>
+				<th><a href="{{ path('weapon_new') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for weapon in weapons %}
+			<tr>
+				<td>{{ weapon.name }}</td>
+				<td>{{ weapon.blades|length }}</td>
+				<td><a href="{{ path('weapon_edit', { 'id': weapon.id }) }}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
