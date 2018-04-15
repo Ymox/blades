@@ -110,9 +110,7 @@ class SkillController extends Controller
 
         if ($level + $change > 0) {
             $skill->setLevel($level + $change);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($skill);
-            $em->flush();
+            $this->getDoctrine()->getManager()->flush();
             $response = new Response($skill->getLevel());
         } else {
             $response = new Response(null, Response::HTTP_NO_CONTENT);
