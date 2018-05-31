@@ -15,12 +15,12 @@ class WeaponLevel
     /**
      * @var int
      */
-    private $y = 1;
+    private $x = 1;
 
     /**
      * @var int
      */
-    private $x = 1;
+    private $y = 1;
 
     /**
      * @var int
@@ -54,30 +54,6 @@ class WeaponLevel
     }
 
     /**
-     * Set y.
-     *
-     * @param int $y
-     *
-     * @return WeaponLevel
-     */
-    public function setY($y)
-    {
-        $this->y = $y;
-
-        return $this;
-    }
-
-    /**
-     * Get y.
-     *
-     * @return int
-     */
-    public function getY()
-    {
-        return $this->y;
-    }
-
-    /**
      * Set x.
      *
      * @param int $x
@@ -99,6 +75,30 @@ class WeaponLevel
     public function getX()
     {
         return $this->x;
+    }
+
+    /**
+     * Set y.
+     *
+     * @param int $y
+     *
+     * @return WeaponLevel
+     */
+    public function setY($y)
+    {
+        $this->y = $y;
+
+        return $this;
+    }
+
+    /**
+     * Get y.
+     *
+     * @return int
+     */
+    public function getY()
+    {
+        return $this->y;
     }
 
     /**
@@ -205,8 +205,8 @@ class WeaponLevel
     public function getArts()
     {
         return array(
-            'y'     => $this->getY(),
             'x'     => $this->getX(),
+            'y'     => $this->getY(),
             'b'     => $this->getB(),
             'chain' => $this->getCHain(),
         );
