@@ -35,7 +35,7 @@
 											<th></th>
 											<th>{{ 'blade.fields.trustLevel'|trans }}</th>
 											<th id="TL{{ blade.id }}">{{ ('blade.trustLevels.' ~ blade.trustLevel)|trans }}</th>
-											<th>{% if blade.trustLevel < 6 -%}
+											<th>{% if blade.trustLevel < 16 -%}
 												<a href="{{ path('blade_trust', { 'id': blade.id }) }}" class="btn btn-sm btn-outline-success ajaxify" data-load-target="#TL{{ blade.id }}"><i class="fa fa-chevron-circle-up"></i></a></td>
 												{%- endif %}</th>
 										</tr>
