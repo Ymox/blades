@@ -73,7 +73,7 @@ class BladeController extends Controller
 
     public function trust(Blade $blade)
     {
-        if ($blade->getTrustLevel() < 6) {
+        if ($blade->getTrustLevel() < 16) {
             $blade->setTrustLevel($blade->getTrustLevel() + 1);
             $this->getDoctrine()->getManager()->flush();
             $response = new Response($this->get('translator')->trans('blade.trustLevels.' . $blade->getTrustLevel()));
@@ -114,14 +114,19 @@ class BladeController extends Controller
         $blades = array();
         $form = $this->createForm(BladeSearchType::class)
             ->handleRequest($request);
+        $nbCriteria = 0;
         if (count($request->query->get('blade_search', array()))) {
+            $nbCriteria = count(array_filter(preg_split('`(^|\?|&).*?=`', $_SERVER['QUERY_STRING'])));
             $blades = $this->getDoctrine()->getManager()->getRepository(Blade::class)
                 ->search($request->query->get('blade_search'));
+            if (count($request->query->get('blade_search')['gender'])) {
+                $nbCriteria -= count($request->query->get('blade_search')['gender']) - 1;
+            }
         }
         return $this->render('blade/search.html.twig', [
             'blades' => $blades,
             'form'   => $form->createView(),
-            'nb_criteria' => count(array_filter(preg_split('`(^|\?|&).*?=`', $_SERVER['QUERY_STRING']))),
+            'nb_criteria' => $nbCriteria,
         ]);
     }
 }
