@@ -2,9 +2,9 @@
  * 
  */
 $(document).ready( function() {
-	var addButton = function($addable) {
-		var uri = $addable.data('uri');
-		var $label = $addable.prev(); 
+	const addButton = function($addable) {
+		const uri = $addable.data('uri');
+		const $label = $addable.prev(); 
 		if (!$label.find('a').length) {
 			$label.append(' ').append(
 				$('<a>', {
@@ -24,8 +24,7 @@ $(document).ready( function() {
 	});
 	
 	$('[data-prototype]').each( function() {
-		console.log()
-		var observer = new MutationObserver( function(mutations) {
+		const observer = new MutationObserver( function(mutations) {
 			mutations.forEach( function(mutation) {
 				addButton($(mutation.addedNodes[0]).find('select.addable'));
 			});
