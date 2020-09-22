@@ -19,12 +19,11 @@ class BladeType extends AbstractType
             ->add('gender', ChoiceType::class, array(
                 'required'     => true,
                 'choices' => array(
-                    'Masculin' => 'M',
-                    'Féminin'  => 'F',
-                    'Bête'     => 'B'
+                    'blade.gender.M.long' => 'M',
+                    'blade.gender.F.long' => 'F',
+                    'blade.gender.B.long' => 'B',
                 ),
                 'label_format' => 'blade.fields.%name%',
-                'choice_translation_domain' => false,
             ))
             ->add('element', null, array(
                 'required'     => true,
@@ -40,9 +39,6 @@ class BladeType extends AbstractType
                 'required'     => true,
                 'label_format' => 'blade.fields.%name%',
                 'choice_label' => 'name',
-            ))
-            ->add('strength', null, array(
-                'label_format' => 'blade.fields.%name%',
             ))
             ->add('trustLevel', ChoiceType::class, array(
                 'choices' => array_combine(range('E', 'A', -1), range(1, 5)) + [
@@ -60,6 +56,9 @@ class BladeType extends AbstractType
                 ],
                 'label_format' => 'blade.fields.%name%',
                 'choice_translation_domain' => false,
+            ))
+            ->add('strength', null, array(
+                'label_format' => 'blade.fields.%name%',
             ))
             ->add('rareness', null, array(
                 'label_format' => 'blade.fields.%name%',

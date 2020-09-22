@@ -63,6 +63,7 @@ blade:
     13: S7
     14: S8
     15: S9
+    16: S+
 
   class:
     ATK:
@@ -74,6 +75,16 @@ blade:
     TNK:
       short: 🛡️
       long: Sentinelle
+  gender:
+    M:
+      long: Masculin
+      short: M
+    F:
+      long: Féminin
+      short: F
+    B:
+      long: Bête
+      short: B
 
   index:
     title: &blade_index Lames
